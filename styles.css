@@ -1,6 +1,6 @@
 /* ============================================
    investigación 004 - portfolio minimalista
-   inspirado en sharonzheng.com
+   con efecto de pliegue 3D inspirado en sharonzheng.com
    ============================================ */
 
 /* Reset y base */
@@ -21,10 +21,90 @@ body {
     line-height: 1.6;
     color: #000;
     background-color: #fff;
-    padding: 20px;
+    overflow-x: hidden;
 }
 
-/* Contenedor principal */
+/* ============================================
+   EFECTO DE PLIEGUE 3D
+   ============================================ */
+
+/* Contenedor principal que centra todo */
+.all {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+}
+
+/* Wrapper con perspectiva 3D */
+.wrapper-3d {
+    perspective: 20vw;
+    position: relative;
+    transform-style: preserve-3d;
+}
+
+/* Cada sección "fold" (pliegue) */
+.fold {
+    width: 80vw;
+    height: 80vh;
+    overflow: hidden;
+}
+
+/* Alineación del contenido dentro de cada fold */
+.fold-align {
+    width: 100%;
+    height: 100%;
+}
+
+/* Contenido que se mueve con el scroll */
+.fold-content {
+    /* El JavaScript aplicará transform aquí */
+}
+
+/* Sección superior - plegada hacia arriba */
+.fold-top {
+    transform: rotateX(-90deg);
+    transform-origin: bottom center;
+}
+
+.fold-top .fold-align {
+    transform: translateY(100%);
+}
+
+/* Sección inferior - plegada hacia abajo */
+.fold-bottom {
+    transform: rotateX(90deg);
+    transform-origin: top center;
+}
+
+.fold-bottom .fold-align {
+    transform: translateY(-100%);
+}
+
+/* Responsive: ángulos más pronunciados en móvil */
+@media only screen and (max-width: 768px) {
+    .fold {
+        height: 80vh;
+    }
+    
+    .fold-top {
+        transform: rotateX(-140deg);
+    }
+    
+    .fold-bottom {
+        transform: rotateX(140deg);
+    }
+}
+
+/* ============================================
+   ESTILOS DEL CONTENIDO
+   ============================================ */
+
+/* Contenedor de contenido */
 .container {
     max-width: 680px;
     margin: 0 auto;
@@ -198,6 +278,21 @@ strong {
         animation-duration: 0.01ms !important;
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
+    }
+    
+    /* Desactivar efecto 3D si el usuario prefiere movimiento reducido */
+    .wrapper-3d {
+        perspective: none;
+    }
+    
+    .fold-top,
+    .fold-bottom {
+        transform: none;
+    }
+    
+    .fold-top .fold-align,
+    .fold-bottom .fold-align {
+        transform: none;
     }
 }
 

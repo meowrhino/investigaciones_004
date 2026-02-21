@@ -7,99 +7,319 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <!-- Header -->
-        <header>
-            <h1 class="name">MANU</h1>
-            <p class="tagline">diseñador y artista web — creative coding, pedagogía digital y agencia tecnológica</p>
-            <p class="contact">
-                <a href="mailto:tu@email.com">email</a> · 
-                <a href="https://github.com/meowrhino" target="_blank">github</a> · 
-                <a href="https://instagram.com/tu_usuario" target="_blank">instagram</a>
-            </p>
-        </header>
+    <!-- Contenedor principal con efecto 3D -->
+    <div class="all">
+        <div class="wrapper-3d">
+            
+            <!-- Sección superior (plegada hacia arriba) -->
+            <div class="fold fold-top">
+                <div class="fold-align">
+                    <div class="fold-content" data-fold-content="true">
+                        <div class="container">
+                            <!-- Header -->
+                            <header>
+                                <h1 class="name">MANU</h1>
+                                <p class="tagline">diseñador y artista web — creative coding, pedagogía digital y agencia tecnológica</p>
+                                <p class="contact">
+                                    <a href="mailto:tu@email.com">email</a> · 
+                                    <a href="https://github.com/meowrhino" target="_blank">github</a> · 
+                                    <a href="https://instagram.com/tu_usuario" target="_blank">instagram</a>
+                                </p>
+                            </header>
 
-        <!-- Investigaciones destacadas -->
-        <section class="section">
-            <h2>investigaciones</h2>
-            <div class="project-list">
-                <div class="project">
-                    <a href="https://github.com/meowrhino/investigaciones_003" target="_blank" class="project-title">investigación 003</a>
-                    <span class="project-description">— parallax collage interactivo inspirado en "indirect flights" de joe hamilton. efecto 3d multicapa usando html, css y javascript vanilla</span>
-                </div>
-                
-                <div class="project">
-                    <a href="https://github.com/meowrhino/investigaciones_002" target="_blank" class="project-title">investigación 002</a>
-                    <span class="project-description">— [descripción pendiente]</span>
-                </div>
-                
-                <div class="project">
-                    <a href="https://github.com/meowrhino/investigaciones_001" target="_blank" class="project-title">investigación 001</a>
-                    <span class="project-description">— [descripción pendiente]</span>
+                            <!-- Investigaciones destacadas -->
+                            <section class="section">
+                                <h2>investigaciones</h2>
+                                <div class="project-list">
+                                    <div class="project">
+                                        <a href="https://github.com/meowrhino/investigaciones_003" target="_blank" class="project-title">investigación 003</a>
+                                        <span class="project-description">— parallax collage interactivo inspirado en "indirect flights" de joe hamilton. efecto 3d multicapa usando html, css y javascript vanilla</span>
+                                    </div>
+                                    
+                                    <div class="project">
+                                        <a href="https://github.com/meowrhino/investigaciones_002" target="_blank" class="project-title">investigación 002</a>
+                                        <span class="project-description">— [descripción pendiente]</span>
+                                    </div>
+                                    
+                                    <div class="project">
+                                        <a href="https://github.com/meowrhino/investigaciones_001" target="_blank" class="project-title">investigación 001</a>
+                                        <span class="project-description">— [descripción pendiente]</span>
+                                    </div>
+                                </div>
+                            </section>
+
+                            <!-- Sobre el proyecto -->
+                            <section class="section">
+                                <h2>sobre este proyecto</h2>
+                                <p>
+                                    este es un índice de mis <strong>investigaciones digitales</strong> — experimentos de creative coding, 
+                                    arte web y exploración tecnológica. cada investigación documenta un proceso de aprendizaje, 
+                                    una técnica específica o una idea visual.
+                                </p>
+                                <p>
+                                    mi trabajo está <strong>politizado</strong> y aboga por la pedagogía digital, dotando de agencia 
+                                    a los individuos para que sean más capaces y felices en su relación con la tecnología.
+                                </p>
+                                <p>
+                                    todos los proyectos están hechos con <strong>código abierto</strong>, sin frameworks pesados, 
+                                    priorizando la accesibilidad y el aprendizaje.
+                                </p>
+                            </section>
+
+                            <!-- Filosofía -->
+                            <section class="section">
+                                <h2>filosofía</h2>
+                                <div class="philosophy-list">
+                                    <p>· código abierto y accesible</p>
+                                    <p>· sin dependencias innecesarias</p>
+                                    <p>· pedagogía digital como práctica política</p>
+                                    <p>· experimentación constante</p>
+                                    <p>· documentación completa</p>
+                                    <p>· creative coding como herramienta de empoderamiento</p>
+                                </div>
+                            </section>
+
+                            <!-- Tecnologías -->
+                            <section class="section">
+                                <h2>tecnologías</h2>
+                                <p>
+                                    html5, css3, javascript vanilla, canvas, webgl, p5.js, three.js (cuando es necesario), 
+                                    svg, animaciones css, web audio api, midi, osc
+                                </p>
+                            </section>
+
+                            <!-- Contacto -->
+                            <section class="section">
+                                <h2>contacto</h2>
+                                <p>
+                                    barcelona, 28 años. siempre abierto a colaboraciones, conversaciones sobre pedagogía digital 
+                                    y proyectos que busquen democratizar la tecnología.
+                                </p>
+                                <p class="footer-note">
+                                    ☆ happy to chat, reach out!
+                                </p>
+                            </section>
+
+                            <!-- Footer -->
+                            <footer>
+                                <p class="credits">
+                                    hecho con html, css y javascript vanilla<br>
+                                    [ no frameworks ] [ no dependencies ] [ pure code ]<br>
+                                    by meowrhino.studio · 2026
+                                </p>
+                            </footer>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </section>
 
-        <!-- Sobre el proyecto -->
-        <section class="section">
-            <h2>sobre este proyecto</h2>
-            <p>
-                este es un índice de mis <strong>investigaciones digitales</strong> — experimentos de creative coding, 
-                arte web y exploración tecnológica. cada investigación documenta un proceso de aprendizaje, 
-                una técnica específica o una idea visual.
-            </p>
-            <p>
-                mi trabajo está <strong>politizado</strong> y aboga por la pedagogía digital, dotando de agencia 
-                a los individuos para que sean más capaces y felices en su relación con la tecnología.
-            </p>
-            <p>
-                todos los proyectos están hechos con <strong>código abierto</strong>, sin frameworks pesados, 
-                priorizando la accesibilidad y el aprendizaje.
-            </p>
-        </section>
+            <!-- Sección central (visible normalmente) -->
+            <div class="fold" id="center-fold">
+                <div class="fold-align">
+                    <div class="fold-content" data-fold-content="true" id="center-content">
+                        <div class="container">
+                            <!-- Header -->
+                            <header>
+                                <h1 class="name">MANU</h1>
+                                <p class="tagline">diseñador y artista web — creative coding, pedagogía digital y agencia tecnológica</p>
+                                <p class="contact">
+                                    <a href="mailto:tu@email.com">email</a> · 
+                                    <a href="https://github.com/meowrhino" target="_blank">github</a> · 
+                                    <a href="https://instagram.com/tu_usuario" target="_blank">instagram</a>
+                                </p>
+                            </header>
 
-        <!-- Filosofía -->
-        <section class="section">
-            <h2>filosofía</h2>
-            <div class="philosophy-list">
-                <p>· código abierto y accesible</p>
-                <p>· sin dependencias innecesarias</p>
-                <p>· pedagogía digital como práctica política</p>
-                <p>· experimentación constante</p>
-                <p>· documentación completa</p>
-                <p>· creative coding como herramienta de empoderamiento</p>
+                            <!-- Investigaciones destacadas -->
+                            <section class="section">
+                                <h2>investigaciones</h2>
+                                <div class="project-list">
+                                    <div class="project">
+                                        <a href="https://github.com/meowrhino/investigaciones_003" target="_blank" class="project-title">investigación 003</a>
+                                        <span class="project-description">— parallax collage interactivo inspirado en "indirect flights" de joe hamilton. efecto 3d multicapa usando html, css y javascript vanilla</span>
+                                    </div>
+                                    
+                                    <div class="project">
+                                        <a href="https://github.com/meowrhino/investigaciones_002" target="_blank" class="project-title">investigación 002</a>
+                                        <span class="project-description">— [descripción pendiente]</span>
+                                    </div>
+                                    
+                                    <div class="project">
+                                        <a href="https://github.com/meowrhino/investigaciones_001" target="_blank" class="project-title">investigación 001</a>
+                                        <span class="project-description">— [descripción pendiente]</span>
+                                    </div>
+                                </div>
+                            </section>
+
+                            <!-- Sobre el proyecto -->
+                            <section class="section">
+                                <h2>sobre este proyecto</h2>
+                                <p>
+                                    este es un índice de mis <strong>investigaciones digitales</strong> — experimentos de creative coding, 
+                                    arte web y exploración tecnológica. cada investigación documenta un proceso de aprendizaje, 
+                                    una técnica específica o una idea visual.
+                                </p>
+                                <p>
+                                    mi trabajo está <strong>politizado</strong> y aboga por la pedagogía digital, dotando de agencia 
+                                    a los individuos para que sean más capaces y felices en su relación con la tecnología.
+                                </p>
+                                <p>
+                                    todos los proyectos están hechos con <strong>código abierto</strong>, sin frameworks pesados, 
+                                    priorizando la accesibilidad y el aprendizaje.
+                                </p>
+                            </section>
+
+                            <!-- Filosofía -->
+                            <section class="section">
+                                <h2>filosofía</h2>
+                                <div class="philosophy-list">
+                                    <p>· código abierto y accesible</p>
+                                    <p>· sin dependencias innecesarias</p>
+                                    <p>· pedagogía digital como práctica política</p>
+                                    <p>· experimentación constante</p>
+                                    <p>· documentación completa</p>
+                                    <p>· creative coding como herramienta de empoderamiento</p>
+                                </div>
+                            </section>
+
+                            <!-- Tecnologías -->
+                            <section class="section">
+                                <h2>tecnologías</h2>
+                                <p>
+                                    html5, css3, javascript vanilla, canvas, webgl, p5.js, three.js (cuando es necesario), 
+                                    svg, animaciones css, web audio api, midi, osc
+                                </p>
+                            </section>
+
+                            <!-- Contacto -->
+                            <section class="section">
+                                <h2>contacto</h2>
+                                <p>
+                                    barcelona, 28 años. siempre abierto a colaboraciones, conversaciones sobre pedagogía digital 
+                                    y proyectos que busquen democratizar la tecnología.
+                                </p>
+                                <p class="footer-note">
+                                    ☆ happy to chat, reach out!
+                                </p>
+                            </section>
+
+                            <!-- Footer -->
+                            <footer>
+                                <p class="credits">
+                                    hecho con html, css y javascript vanilla<br>
+                                    [ no frameworks ] [ no dependencies ] [ pure code ]<br>
+                                    by meowrhino.studio · 2026
+                                </p>
+                            </footer>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </section>
 
-        <!-- Tecnologías -->
-        <section class="section">
-            <h2>tecnologías</h2>
-            <p>
-                html5, css3, javascript vanilla, canvas, webgl, p5.js, three.js (cuando es necesario), 
-                svg, animaciones css, web audio api, midi, osc
-            </p>
-        </section>
+            <!-- Sección inferior (plegada hacia abajo) -->
+            <div class="fold fold-bottom">
+                <div class="fold-align">
+                    <div class="fold-content" data-fold-content="true">
+                        <div class="container">
+                            <!-- Header -->
+                            <header>
+                                <h1 class="name">MANU</h1>
+                                <p class="tagline">diseñador y artista web — creative coding, pedagogía digital y agencia tecnológica</p>
+                                <p class="contact">
+                                    <a href="mailto:tu@email.com">email</a> · 
+                                    <a href="https://github.com/meowrhino" target="_blank">github</a> · 
+                                    <a href="https://instagram.com/tu_usuario" target="_blank">instagram</a>
+                                </p>
+                            </header>
 
-        <!-- Contacto -->
-        <section class="section">
-            <h2>contacto</h2>
-            <p>
-                barcelona, 28 años. siempre abierto a colaboraciones, conversaciones sobre pedagogía digital 
-                y proyectos que busquen democratizar la tecnología.
-            </p>
-            <p class="footer-note">
-                ☆ happy to chat, reach out!
-            </p>
-        </section>
+                            <!-- Investigaciones destacadas -->
+                            <section class="section">
+                                <h2>investigaciones</h2>
+                                <div class="project-list">
+                                    <div class="project">
+                                        <a href="https://github.com/meowrhino/investigaciones_003" target="_blank" class="project-title">investigación 003</a>
+                                        <span class="project-description">— parallax collage interactivo inspirado en "indirect flights" de joe hamilton. efecto 3d multicapa usando html, css y javascript vanilla</span>
+                                    </div>
+                                    
+                                    <div class="project">
+                                        <a href="https://github.com/meowrhino/investigaciones_002" target="_blank" class="project-title">investigación 002</a>
+                                        <span class="project-description">— [descripción pendiente]</span>
+                                    </div>
+                                    
+                                    <div class="project">
+                                        <a href="https://github.com/meowrhino/investigaciones_001" target="_blank" class="project-title">investigación 001</a>
+                                        <span class="project-description">— [descripción pendiente]</span>
+                                    </div>
+                                </div>
+                            </section>
 
-        <!-- Footer -->
-        <footer>
-            <p class="credits">
-                hecho con html, css y javascript vanilla<br>
-                [ no frameworks ] [ no dependencies ] [ pure code ]<br>
-                by meowrhino.studio · 2026
-            </p>
-        </footer>
+                            <!-- Sobre el proyecto -->
+                            <section class="section">
+                                <h2>sobre este proyecto</h2>
+                                <p>
+                                    este es un índice de mis <strong>investigaciones digitales</strong> — experimentos de creative coding, 
+                                    arte web y exploración tecnológica. cada investigación documenta un proceso de aprendizaje, 
+                                    una técnica específica o una idea visual.
+                                </p>
+                                <p>
+                                    mi trabajo está <strong>politizado</strong> y aboga por la pedagogía digital, dotando de agencia 
+                                    a los individuos para que sean más capaces y felices en su relación con la tecnología.
+                                </p>
+                                <p>
+                                    todos los proyectos están hechos con <strong>código abierto</strong>, sin frameworks pesados, 
+                                    priorizando la accesibilidad y el aprendizaje.
+                                </p>
+                            </section>
+
+                            <!-- Filosofía -->
+                            <section class="section">
+                                <h2>filosofía</h2>
+                                <div class="philosophy-list">
+                                    <p>· código abierto y accesible</p>
+                                    <p>· sin dependencias innecesarias</p>
+                                    <p>· pedagogía digital como práctica política</p>
+                                    <p>· experimentación constante</p>
+                                    <p>· documentación completa</p>
+                                    <p>· creative coding como herramienta de empoderamiento</p>
+                                </div>
+                            </section>
+
+                            <!-- Tecnologías -->
+                            <section class="section">
+                                <h2>tecnologías</h2>
+                                <p>
+                                    html5, css3, javascript vanilla, canvas, webgl, p5.js, three.js (cuando es necesario), 
+                                    svg, animaciones css, web audio api, midi, osc
+                                </p>
+                            </section>
+
+                            <!-- Contacto -->
+                            <section class="section">
+                                <h2>contacto</h2>
+                                <p>
+                                    barcelona, 28 años. siempre abierto a colaboraciones, conversaciones sobre pedagogía digital 
+                                    y proyectos que busquen democratizar la tecnología.
+                                </p>
+                                <p class="footer-note">
+                                    ☆ happy to chat, reach out!
+                                </p>
+                            </section>
+
+                            <!-- Footer -->
+                            <footer>
+                                <p class="credits">
+                                    hecho con html, css y javascript vanilla<br>
+                                    [ no frameworks ] [ no dependencies ] [ pure code ]<br>
+                                    by meowrhino.studio · 2026
+                                </p>
+                            </footer>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
     </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
