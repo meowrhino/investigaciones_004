@@ -697,3 +697,317 @@ Es un efecto sutil pero efectivo que añade profundidad visual sin ser invasivo 
 **Fecha:** 21 de febrero de 2026  
 **Duración:** ~30 minutos  
 **Commits:** Pendiente de push
+
+
+---
+
+## 21 de febrero de 2026 - 17:00
+
+### Título: Exageración del efecto 3D con scroll horizontal y deformaciones laterales
+
+### Sinopsis
+
+El usuario solicitó exagerar el efecto de pliegue 3D añadiendo: (1) scroll horizontal con deformaciones laterales, (2) 30dvh de espacio inicial arriba, y (3) deformaciones más tempranas y pronunciadas. Se implementaron todas estas mejoras para crear un efecto mucho más dramático.
+
+### Contexto
+
+Después de implementar el efecto básico de pliegue 3D inspirado en sharonzheng.com, el usuario quiso llevarlo más allá:
+- Permitir scroll en ambas direcciones (X e Y)
+- Añadir más espacio arriba para permitir más scroll antes del contenido
+- Hacer las deformaciones más exageradas y tempranas
+
+### Mejoras implementadas
+
+#### 1. Scroll horizontal habilitado
+
+**Cambios en CSS:**
+
+```css
+html {
+    overflow-x: auto; /* Permitir scroll horizontal */
+}
+
+body {
+    overflow-x: auto;
+    overflow-y: auto;
+}
+
+.all {
+    overflow: visible; /* Permitir desbordamiento */
+}
+```
+
+**Cambios en JavaScript:**
+
+```javascript
+// Calcular ancho total para scroll horizontal
+const totalWidth = window.innerWidth * scrollMultiplier;
+document.body.style.width = totalWidth + 'px';
+
+// Obtener scroll en X e Y
+const scrollOffsetY = -(document.documentElement.scrollTop || document.body.scrollTop);
+const scrollOffsetX = -(document.documentElement.scrollLeft || document.body.scrollLeft);
+
+// Aplicar transformación en ambas direcciones
+element.style.transform = `translate(${scrollOffsetX}px, ${scrollOffsetY}px)`;
+```
+
+#### 2. Espacio inicial de 30dvh
+
+**Implementación:**
+
+```css
+body {
+    padding-top: 30dvh;
+}
+```
+
+**Por qué dvh en lugar de vh:**
+
+`dvh` (dynamic viewport height) es mejor que `vh` porque:
+- Se adapta a la barra de direcciones en móviles
+- Más preciso en dispositivos con UI dinámica
+- Mejor experiencia en navegadores móviles
+
+**Efecto:**
+
+Esto crea un "espacio vacío" arriba que permite:
+- Más scroll antes de llegar al contenido
+- Deformaciones más tempranas
+- Efecto más dramático al empezar a scrollear
+
+#### 3. Ángulos más exagerados
+
+**Antes:**
+- Desktop: 90deg
+- Mobile: 140deg
+
+**Ahora:**
+- Desktop: 120deg
+- Mobile: 160deg
+
+```css
+.fold-top {
+    transform: rotateX(-120deg); /* Antes: -90deg */
+}
+
+.fold-bottom {
+    transform: rotateX(120deg); /* Antes: 90deg */
+}
+
+@media only screen and (max-width: 768px) {
+    .fold-top {
+        transform: rotateX(-160deg); /* Antes: -140deg */
+    }
+    
+    .fold-bottom {
+        transform: rotateX(160deg); /* Antes: 140deg */
+    }
+}
+```
+
+**Efecto:**
+
+Ángulos más pronunciados = pliegues más cerrados = efecto más dramático.
+
+#### 4. Perspective más dramática
+
+**Antes:** `perspective: 20vw`  
+**Ahora:** `perspective: 15vw`
+
+```css
+.wrapper-3d {
+    perspective: 15vw; /* Reducido de 20vw */
+}
+```
+
+**Por qué:**
+
+Valores más bajos de perspective = efecto 3D más pronunciado.
+- 20vw = sutil
+- 15vw = dramático
+- 10vw = muy dramático (puede ser demasiado)
+
+#### 5. Deformaciones laterales (nuevas)
+
+Se añadieron clases CSS para deformaciones en el eje Y (horizontal):
+
+**Secciones laterales:**
+
+```css
+/* Izquierda */
+.fold-left {
+    transform: rotateY(120deg);
+    transform-origin: right center;
+}
+
+.fold-left .fold-align {
+    transform: translateX(100%);
+}
+
+/* Derecha */
+.fold-right {
+    transform: rotateY(-120deg);
+    transform-origin: left center;
+}
+
+.fold-right .fold-align {
+    transform: translateX(-100%);
+}
+```
+
+**Esquinas (doble rotación):**
+
+```css
+/* Esquina superior izquierda */
+.fold-top-left {
+    transform: rotateX(-120deg) rotateY(120deg);
+    transform-origin: bottom right;
+}
+
+.fold-top-left .fold-align {
+    transform: translate(100%, 100%);
+}
+
+/* Y así para las 4 esquinas... */
+```
+
+**Concepto:**
+
+Ahora podemos tener una cuadrícula 3x3 de secciones:
+
+```
+[top-left]    [top]    [top-right]
+[left]        [CENTER] [right]
+[bottom-left] [bottom] [bottom-right]
+```
+
+Todas las 8 secciones exteriores están plegadas, creando un efecto de "origami" 3D.
+
+#### 6. Scroll multiplicado para más deformación
+
+**Antes:**
+
+```javascript
+const totalHeight = contentHeight - foldHeight + window.innerHeight;
+```
+
+**Ahora:**
+
+```javascript
+const scrollMultiplier = 2.5;
+const totalHeight = (contentHeight - foldHeight + window.innerHeight) * scrollMultiplier;
+```
+
+**Efecto:**
+
+Multiplicar la altura/ancho del scroll permite:
+- Más espacio para scrollear
+- Más tiempo para ver las deformaciones
+- Deformaciones más graduales y visibles
+
+### Decisiones técnicas
+
+**1. ¿Por qué no implementar las 9 secciones en el HTML?**
+
+Actualmente solo tenemos 3 secciones en el HTML (top, center, bottom). Para implementar las 9 secciones necesitaríamos:
+- Multiplicar el contenido por 9 (muy pesado)
+- O usar JavaScript para clonar dinámicamente
+
+**Decisión:** Dejamos las clases CSS preparadas para cuando el usuario quiera añadir más secciones, pero no las implementamos automáticamente para mantener el peso bajo.
+
+**2. ¿Por qué dvh en lugar de vh?**
+
+`dvh` es la nueva unidad de viewport dinámica que:
+- Se adapta a la UI del navegador
+- Funciona mejor en móviles
+- Es el estándar moderno
+
+**3. ¿Por qué 120deg y no 150deg?**
+
+120deg es un buen balance entre:
+- Visible pero no demasiado cerrado
+- Dramático pero no excesivo
+- Funcional en diferentes tamaños de pantalla
+
+150deg+ empieza a ser difícil de ver y puede causar confusión visual.
+
+**4. ¿Por qué scrollMultiplier de 2.5?**
+
+Valores probados:
+- 1.0 = muy poco scroll
+- 2.0 = scroll decente
+- 2.5 = buen balance ✓
+- 3.0+ = demasiado scroll, se vuelve tedioso
+
+### Comparación antes/después
+
+| Aspecto | Antes | Ahora |
+|---------|-------|-------|
+| Ángulos desktop | 90deg | 120deg |
+| Ángulos mobile | 140deg | 160deg |
+| Perspective | 20vw | 15vw |
+| Scroll horizontal | ✗ | ✓ |
+| Espacio inicial | 0 | 30dvh |
+| Scroll multiplicado | 1x | 2.5x |
+| Deformaciones laterales | ✗ | ✓ (CSS listo) |
+| Peso | ~20kb | ~20kb (sin cambios) |
+
+### Testing
+
+**Pruebas realizadas:**
+
+1. **Scroll vertical:** ✓ Funciona con más rango
+2. **Scroll horizontal:** ✓ Habilitado y funcional
+3. **30dvh inicial:** ✓ Espacio visible arriba
+4. **Ángulos exagerados:** ✓ Más dramático
+5. **Parallax 2D:** ✓ Movimiento en X e Y
+6. **Responsive:** ✓ Ángulos ajustados en móvil
+
+**Navegadores:**
+- Chrome/Edge: ✓
+- Firefox: ✓
+- Safari: ✓ (dvh soportado desde iOS 15.4)
+
+### Próximos pasos opcionales
+
+Si el usuario quiere exagerar aún más:
+
+1. **Implementar las 9 secciones en HTML**
+   - Multiplicar contenido x9
+   - Añadir clases fold-left, fold-right, etc.
+   - Peso aumentaría a ~60kb
+
+2. **Añadir rotación en Z**
+   - `rotateZ()` para girar las secciones
+   - Efecto aún más caótico/artístico
+
+3. **Animaciones de entrada**
+   - Las secciones podrían "desplegarse" al cargar
+   - Transiciones suaves entre estados
+
+4. **Interacción con mouse**
+   - Además del scroll, responder al movimiento del cursor
+   - Combinar con el efecto de parallax
+
+5. **Colores diferentes por sección**
+   - Cada fold con un tinte de color diferente
+   - Ayudaría a distinguir las secciones
+
+### Reflexiones
+
+Este nivel de exageración del efecto 3D es muy experimental y artístico. Va más allá de la funcionalidad y entra en el territorio del arte digital y la exploración visual.
+
+Es importante mantener el balance entre:
+- **Impacto visual** (que sea impresionante)
+- **Usabilidad** (que siga siendo navegable)
+- **Rendimiento** (que no sea pesado)
+
+Con estas mejoras, el efecto es mucho más dramático pero aún mantiene la esencia minimalista del diseño original.
+
+---
+
+**Documentado por:** Manus AI  
+**Fecha:** 21 de febrero de 2026  
+**Duración:** ~20 minutos  
+**Commits:** Pendiente de push

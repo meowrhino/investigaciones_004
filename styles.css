@@ -1,6 +1,7 @@
 /* ============================================
    investigación 004 - portfolio minimalista
-   con efecto de pliegue 3D inspirado en sharonzheng.com
+   con efecto de pliegue 3D EXAGERADO
+   inspirado en sharonzheng.com
    ============================================ */
 
 /* Reset y base */
@@ -14,6 +15,8 @@ html {
     font-size: 16px;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    /* Permitir scroll horizontal */
+    overflow-x: auto;
 }
 
 body {
@@ -21,11 +24,15 @@ body {
     line-height: 1.6;
     color: #000;
     background-color: #fff;
-    overflow-x: hidden;
+    /* Permitir scroll en ambas direcciones */
+    overflow-x: auto;
+    overflow-y: auto;
+    /* Espacio inicial de 30dvh arriba */
+    padding-top: 30dvh;
 }
 
 /* ============================================
-   EFECTO DE PLIEGUE 3D
+   EFECTO DE PLIEGUE 3D EXAGERADO
    ============================================ */
 
 /* Contenedor principal que centra todo */
@@ -38,13 +45,17 @@ body {
     left: 0;
     width: 100%;
     height: 100vh;
+    /* Permitir que el contenido se desborde horizontalmente */
+    overflow: visible;
 }
 
-/* Wrapper con perspectiva 3D */
+/* Wrapper con perspectiva 3D MÁS DRAMÁTICA */
 .wrapper-3d {
-    perspective: 20vw;
+    perspective: 15vw; /* Reducido de 20vw para efecto más dramático */
     position: relative;
     transform-style: preserve-3d;
+    /* Permitir desbordamiento para scroll horizontal */
+    overflow: visible;
 }
 
 /* Cada sección "fold" (pliegue) */
@@ -65,9 +76,13 @@ body {
     /* El JavaScript aplicará transform aquí */
 }
 
-/* Sección superior - plegada hacia arriba */
+/* ============================================
+   SECCIONES VERTICALES (arriba/abajo)
+   ============================================ */
+
+/* Sección superior - plegada hacia arriba MÁS EXAGERADO */
 .fold-top {
-    transform: rotateX(-90deg);
+    transform: rotateX(-120deg); /* Más exagerado: de -90deg a -120deg */
     transform-origin: bottom center;
 }
 
@@ -75,9 +90,9 @@ body {
     transform: translateY(100%);
 }
 
-/* Sección inferior - plegada hacia abajo */
+/* Sección inferior - plegada hacia abajo MÁS EXAGERADO */
 .fold-bottom {
-    transform: rotateX(90deg);
+    transform: rotateX(120deg); /* Más exagerado: de 90deg a 120deg */
     transform-origin: top center;
 }
 
@@ -85,18 +100,115 @@ body {
     transform: translateY(-100%);
 }
 
-/* Responsive: ángulos más pronunciados en móvil */
+/* ============================================
+   SECCIONES HORIZONTALES (izquierda/derecha)
+   ============================================ */
+
+/* Sección izquierda - plegada hacia la izquierda */
+.fold-left {
+    transform: rotateY(120deg);
+    transform-origin: right center;
+}
+
+.fold-left .fold-align {
+    transform: translateX(100%);
+}
+
+/* Sección derecha - plegada hacia la derecha */
+.fold-right {
+    transform: rotateY(-120deg);
+    transform-origin: left center;
+}
+
+.fold-right .fold-align {
+    transform: translateX(-100%);
+}
+
+/* ============================================
+   SECCIONES DIAGONALES (esquinas)
+   ============================================ */
+
+/* Esquina superior izquierda */
+.fold-top-left {
+    transform: rotateX(-120deg) rotateY(120deg);
+    transform-origin: bottom right;
+}
+
+.fold-top-left .fold-align {
+    transform: translate(100%, 100%);
+}
+
+/* Esquina superior derecha */
+.fold-top-right {
+    transform: rotateX(-120deg) rotateY(-120deg);
+    transform-origin: bottom left;
+}
+
+.fold-top-right .fold-align {
+    transform: translate(-100%, 100%);
+}
+
+/* Esquina inferior izquierda */
+.fold-bottom-left {
+    transform: rotateX(120deg) rotateY(120deg);
+    transform-origin: top right;
+}
+
+.fold-bottom-left .fold-align {
+    transform: translate(100%, -100%);
+}
+
+/* Esquina inferior derecha */
+.fold-bottom-right {
+    transform: rotateX(120deg) rotateY(-120deg);
+    transform-origin: top left;
+}
+
+.fold-bottom-right .fold-align {
+    transform: translate(-100%, -100%);
+}
+
+/* Responsive: ángulos AÚN MÁS pronunciados en móvil */
 @media only screen and (max-width: 768px) {
+    body {
+        padding-top: 30dvh;
+    }
+    
     .fold {
         height: 80vh;
     }
     
+    /* Ángulos más extremos en móvil */
     .fold-top {
-        transform: rotateX(-140deg);
+        transform: rotateX(-160deg);
     }
     
     .fold-bottom {
-        transform: rotateX(140deg);
+        transform: rotateX(160deg);
+    }
+    
+    .fold-left {
+        transform: rotateY(160deg);
+    }
+    
+    .fold-right {
+        transform: rotateY(-160deg);
+    }
+    
+    .fold-top-left {
+        transform: rotateX(-160deg) rotateY(160deg);
+    }
+    
+    .fold-top-right {
+        transform: rotateX(-160deg) rotateY(-160deg);
+    }
+    
+    .fold-bottom-left {
+        transform: rotateX(160deg) rotateY(160deg);
+    }
+    
+    .fold-bottom-right {
+        transform: rotateX(160deg) rotateY(-160deg);
     }
 }
 
@@ -256,6 +368,7 @@ strong {
 @media (max-width: 768px) {
     body {
         padding: 10px;
+        padding-top: 30dvh;
     }
     
     .container {
@@ -280,18 +393,34 @@ strong {
         transition-duration: 0.01ms !important;
     }
     
+    body {
+        padding-top: 0;
+    }
+    
     /* Desactivar efecto 3D si el usuario prefiere movimiento reducido */
     .wrapper-3d {
         perspective: none;
     }
     
     .fold-top,
-    .fold-bottom {
+    .fold-bottom,
+    .fold-left,
+    .fold-right,
+    .fold-top-left,
+    .fold-top-right,
+    .fold-bottom-left,
+    .fold-bottom-right {
         transform: none;
     }
     
     .fold-top .fold-align,
-    .fold-bottom .fold-align {
+    .fold-bottom .fold-align,
+    .fold-left .fold-align,
+    .fold-right .fold-align,
+    .fold-top-left .fold-align,
+    .fold-top-right .fold-align,
+    .fold-bottom-left .fold-align,
+    .fold-bottom-right .fold-align {
         transform: none;
     }
 }
